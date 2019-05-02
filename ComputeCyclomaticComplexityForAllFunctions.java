@@ -55,7 +55,7 @@ public class ComputeCyclomaticComplexityForAllFunctions extends GhidraScript {
 		else { //isRunningHeadless
 			
 			for( Function currentFunction : functionIterator ) {
-				int functionCyclomaticComplexity = 0;
+				int functionCyclomaticComplexity = cyclo.calculateCyclomaticComplexity(currentFunction, getMonitor());;
 				printf("%s complexity: %d\n", currentFunction.getName(), functionCyclomaticComplexity);
 			}
 		}
