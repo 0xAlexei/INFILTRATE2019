@@ -1,0 +1,940 @@
+MallocTrace.java> Running...
+Found sink function malloc @ 0x400510
+	Found malloc reference @ 0x4007bb (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x4007c8 (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x4007da (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x4007ee (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x400805 (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x400819 (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x400834 (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x400848 (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x400855 (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x400869 (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x40087d (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x4008a1 (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x4008b2 (UNCONDITIONAL_CALL)
+	Found malloc reference @ 0x4008c8 (UNCONDITIONAL_CALL)
+Found sink function malloc @ 0x602020
+	Found malloc reference @ 0x601030 (DATA)
+	Found malloc reference @ 0x400510 (COMPUTED_CALL_TERMINATOR)
+
+Found 3 functions calling sink function
+	-> analyzefun2
+	-> analyzefun3
+	-> analyzefun
+
+Found 1 sink function call sites in analyzefun2
+
+Call @ 0x4008b2 [analyzefun2] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (const, 0x5, 8) @ 0x5
+		isConstant: 5
+Adding new child...
+
+Found 1 sink function call sites in analyzefun3
+
+Call @ 0x4008c8 [analyzefun3] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x4008c3 - processOneVarnode: (register, 0x0, 8) INT_SEXT (register, 0x0, 4)
+0x4008be - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400530, 8)
+Located source - call to 400530 [rand]
+Adding new child...
+Function rand entry @ 0x400530
+Found rand return @ 0x400530
+0x400530 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602030, 8)
+Located source - call to 602030 [rand]
+Adding new child...
+Function rand entry @ 0x602030
+Found rand return @ 0x602030
+--> Could not resolve return value from rand
+
+
+
+
+
+Found 12 sink function call sites in analyzefun
+
+Call @ 0x4007bb [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (const, 0x5, 8) @ 0x5
+		isConstant: 5
+Adding new child...
+
+Call @ 0x4007c8 [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (const, 0x9, 8) @ 0x9
+		isConstant: 9
+Adding new child...
+
+Call @ 0x4007da [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (const, 0x13, 8) @ 0x13
+		isConstant: 19
+Adding new child...
+
+Call @ 0x4007ee [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x4007e9 - processOneVarnode: (register, 0x0, 8) INT_SEXT (register, 0x0, 4)
+0x4007e4 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400727, 8)
+Located source - call to 400727 [return3]
+Adding new child...
+Function return3 entry @ 0x400727
+Found return3 return @ 0x400731
+0x40072b - processOneVarnode: (register, 0x0, 8) COPY (const, 0x3, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x3, 8)
+Adding new child...
+
+
+
+
+
+Call @ 0x400805 [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x400800 - processOneVarnode: (register, 0x0, 8) INT_SEXT (register, 0x0, 4)
+0x4007fd - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (const, 0x41, 4)
+0x4007f8 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400683, 8)
+Located source - call to 400683 [getNumber]
+Adding new child...
+Function getNumber entry @ 0x400683
+Found getNumber return @ 0x4006fe
+0x4006fd - processOneVarnode: (register, 0x0, 8) MULTIEQUAL (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8)
+Processing a MULTIEQUAL with 6 inputs0x40069c - processOneVarnode: (register, 0x0, 8) COPY (const, 0x9, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x9, 8)
+Adding new child...
+0x4006b2 - processOneVarnode: (register, 0x0, 8) PIECE (register, 0x4, 4) , (register, 0x0, 4)
+0x4006b2 - processOneVarnode: (register, 0x4, 4) INDIRECT (const, 0x0, 4) , (const, 0x2f, 4)
+USED In INDIRECT --> output (register, 0x4, 4)
+PC0 -> (register, 0x20, 8) INT_SUB (register, 0x20, 8) , (const, 0x8, 8)
+PC1 ->  ---  STORE (const, 0x131, 8) , (register, 0x20, 8) , (const, 0x4006b7, 8)
+PC2 ->  ---  CALL (ram, 0x400520, 8)
+INDIRECT Associated with call @ 400520 (atoi)
+			processOneVarnode: Addr or Constant! - (const, 0x2f, 4)
+Adding new child...
+0x4006b2 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400520, 8) , (unique, 0x100000ac, 8)
+Located source - call to 400520 [atoi]
+Adding new child...
+Function atoi entry @ 0x400520
+Found atoi return @ 0x400520
+0x400520 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602028, 8) , (register, 0x38, 8)
+Located source - call to 602028 [atoi]
+Adding new child...
+Function atoi entry @ 0x602028
+Found atoi return @ 0x602028
+--> Could not resolve return value from atoi
+
+
+
+
+0x4006c5 - processOneVarnode: (register, 0x0, 8) PIECE (register, 0x4, 4) , (register, 0x0, 4)
+0x4006c5 - processOneVarnode: (register, 0x4, 4) INDIRECT (const, 0x0, 4) , (const, 0x3d, 4)
+USED In INDIRECT --> output (register, 0x4, 4)
+PC0 -> (register, 0x20, 8) INT_SUB (register, 0x20, 8) , (const, 0x8, 8)
+PC1 ->  ---  STORE (const, 0x131, 8) , (register, 0x20, 8) , (const, 0x4006ca, 8)
+PC2 ->  ---  CALL (ram, 0x400530, 8)
+INDIRECT Associated with call @ 400530 (rand)
+			processOneVarnode: Addr or Constant! - (const, 0x3d, 4)
+Adding new child...
+0x4006c5 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400530, 8)
+Located source - call to 400530 [rand]
+Adding new child...
+Function rand entry @ 0x400530
+Found rand return @ 0x400530
+0x400530 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602030, 8)
+Located source - call to 602030 [rand]
+Adding new child...
+Function rand entry @ 0x602030
+Found rand return @ 0x602030
+--> Could not resolve return value from rand
+
+
+
+
+0x4006dd - processOneVarnode: (register, 0x0, 8) CALL (ram, 0x400656, 8)
+Located source - call to 400656 [oneOf3]
+Adding new child...
+Function oneOf3 entry @ 0x400656
+Found oneOf3 return @ 0x400682
+0x400681 - processOneVarnode: (register, 0x0, 8) MULTIEQUAL (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8)
+Processing a MULTIEQUAL with 3 inputs0x400664 - processOneVarnode: (register, 0x0, 8) COPY (const, 0x1, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x1, 8)
+Adding new child...
+0x400675 - processOneVarnode: (register, 0x0, 8) COPY (const, 0x2, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x2, 8)
+Adding new child...
+0x40067c - processOneVarnode: (register, 0x0, 8) COPY (const, 0x3, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x3, 8)
+Adding new child...
+
+
+
+
+0x4006f0 - processOneVarnode: (register, 0x0, 8) COPY (const, 0x4d, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x4d, 8)
+Adding new child...
+0x4006fa - processOneVarnode: (register, 0x0, 8) COPY (const, 0xb, 8)
+			processOneVarnode: Addr or Constant! - (const, 0xb, 8)
+Adding new child...
+
+
+
+
+
+Call @ 0x400819 [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x400814 - processOneVarnode: (register, 0x0, 8) INT_SEXT (register, 0x0, 4)
+0x40080f - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x4006ff, 8)
+Located source - call to 4006ff [getNumber2]
+Adding new child...
+Function getNumber2 entry @ 0x4006ff
+Found getNumber2 return @ 0x400726
+0x40071e - processOneVarnode: (register, 0x0, 8) COPY (register, 0x0, 8)
+0x40071e - processOneVarnode: (register, 0x0, 8) INT_ZEXT (unique, 0x10000042, 4)
+0x40071e - processOneVarnode: (unique, 0x10000042, 4) CAST (register, 0x0, 4)
+0x40071e - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (register, 0x0, 4)
+0x400719 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400520, 8) , (unique, 0x1000003a, 8)
+Located source - call to 400520 [atoi]
+Adding new child...
+Function atoi entry @ 0x400520
+Found atoi return @ 0x400520
+0x400520 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602028, 8) , (register, 0x38, 8)
+Located source - call to 602028 [atoi]
+Adding new child...
+Function atoi entry @ 0x602028
+Found atoi return @ 0x602028
+--> Could not resolve return value from atoi
+
+
+
+
+0x40070d - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400683, 8)
+Located source - call to 400683 [getNumber]
+Adding new child...
+Function getNumber entry @ 0x400683
+Found getNumber return @ 0x4006fe
+0x4006fd - processOneVarnode: (register, 0x0, 8) MULTIEQUAL (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8)
+Processing a MULTIEQUAL with 6 inputs0x40069c - processOneVarnode: (register, 0x0, 8) COPY (const, 0x9, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x9, 8)
+Adding new child...
+0x4006b2 - processOneVarnode: (register, 0x0, 8) PIECE (register, 0x4, 4) , (register, 0x0, 4)
+0x4006b2 - processOneVarnode: (register, 0x4, 4) INDIRECT (const, 0x0, 4) , (const, 0x2f, 4)
+USED In INDIRECT --> output (register, 0x4, 4)
+PC0 -> (register, 0x20, 8) INT_SUB (register, 0x20, 8) , (const, 0x8, 8)
+PC1 ->  ---  STORE (const, 0x131, 8) , (register, 0x20, 8) , (const, 0x4006b7, 8)
+PC2 ->  ---  CALL (ram, 0x400520, 8)
+INDIRECT Associated with call @ 400520 (atoi)
+			processOneVarnode: Addr or Constant! - (const, 0x2f, 4)
+Adding new child...
+0x4006b2 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400520, 8) , (unique, 0x100000ac, 8)
+Located source - call to 400520 [atoi]
+Adding new child...
+Function atoi entry @ 0x400520
+Found atoi return @ 0x400520
+0x400520 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602028, 8) , (register, 0x38, 8)
+Located source - call to 602028 [atoi]
+Adding new child...
+Function atoi entry @ 0x602028
+Found atoi return @ 0x602028
+--> Could not resolve return value from atoi
+
+
+
+
+0x4006c5 - processOneVarnode: (register, 0x0, 8) PIECE (register, 0x4, 4) , (register, 0x0, 4)
+0x4006c5 - processOneVarnode: (register, 0x4, 4) INDIRECT (const, 0x0, 4) , (const, 0x3d, 4)
+USED In INDIRECT --> output (register, 0x4, 4)
+PC0 -> (register, 0x20, 8) INT_SUB (register, 0x20, 8) , (const, 0x8, 8)
+PC1 ->  ---  STORE (const, 0x131, 8) , (register, 0x20, 8) , (const, 0x4006ca, 8)
+PC2 ->  ---  CALL (ram, 0x400530, 8)
+INDIRECT Associated with call @ 400530 (rand)
+			processOneVarnode: Addr or Constant! - (const, 0x3d, 4)
+Adding new child...
+0x4006c5 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400530, 8)
+Located source - call to 400530 [rand]
+Adding new child...
+Function rand entry @ 0x400530
+Found rand return @ 0x400530
+0x400530 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602030, 8)
+Located source - call to 602030 [rand]
+Adding new child...
+Function rand entry @ 0x602030
+Found rand return @ 0x602030
+--> Could not resolve return value from rand
+
+
+
+
+0x4006dd - processOneVarnode: (register, 0x0, 8) CALL (ram, 0x400656, 8)
+Located source - call to 400656 [oneOf3]
+Adding new child...
+Function oneOf3 entry @ 0x400656
+Found oneOf3 return @ 0x400682
+0x400681 - processOneVarnode: (register, 0x0, 8) MULTIEQUAL (register, 0x0, 8) , (register, 0x0, 8) , (register, 0x0, 8)
+Processing a MULTIEQUAL with 3 inputs0x400664 - processOneVarnode: (register, 0x0, 8) COPY (const, 0x1, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x1, 8)
+Adding new child...
+0x400675 - processOneVarnode: (register, 0x0, 8) COPY (const, 0x2, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x2, 8)
+Adding new child...
+0x40067c - processOneVarnode: (register, 0x0, 8) COPY (const, 0x3, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x3, 8)
+Adding new child...
+
+
+
+
+0x4006f0 - processOneVarnode: (register, 0x0, 8) COPY (const, 0x4d, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x4d, 8)
+Adding new child...
+0x4006fa - processOneVarnode: (register, 0x0, 8) COPY (const, 0xb, 8)
+			processOneVarnode: Addr or Constant! - (const, 0xb, 8)
+Adding new child...
+
+
+
+
+
+
+
+
+
+Call @ 0x400834 [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x40082f - processOneVarnode: (register, 0x0, 8) INT_SEXT (register, 0x0, 4)
+0x40082d - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (const, 0xa, 4)
+0x400823 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400727, 8)
+Located source - call to 400727 [return3]
+Adding new child...
+Function return3 entry @ 0x400727
+Found return3 return @ 0x400731
+0x40072b - processOneVarnode: (register, 0x0, 8) COPY (const, 0x3, 8)
+			processOneVarnode: Addr or Constant! - (const, 0x3, 8)
+Adding new child...
+
+
+
+
+
+Call @ 0x400848 [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x400840 - processOneVarnode: (register, 0x0, 8) CALL (ram, 0x4004f0, 8) , (register, 0x38, 8)
+Located source - call to 4004f0 [strlen]
+Adding new child...
+Function strlen entry @ 0x4004f0
+Found strlen return @ 0x4004f0
+0x4004f0 - processOneVarnode: (register, 0x0, 8) CALL (ram, 0x602008, 8) , (register, 0x38, 8)
+Located source - call to 602008 [strlen]
+Adding new child...
+Function strlen entry @ 0x602008
+Found strlen return @ 0x602008
+--> Could not resolve return value from strlen
+
+
+
+
+
+Call @ 0x400855 [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x400850 - processOneVarnode: (register, 0x0, 8) INT_SEXT (register, 0x30, 4)
+Varnode is function parameter -> parameter #1... (register, 0x30, 4)
+Could not get calling function @ 0x0
+Could not get calling function @ 0x400ac4
+Could not get calling function @ 0x400c78
+analyzeCallSites(..., analyzefun, ...) - found calling function @ 0x4008eb [intermediatefunc2]
+found unconditional call intermediatefunc2 -> analyzefun
+
+Call @ 0x4008eb [intermediatefunc2] to 0x400799 [analyzefun] (4 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x4008e6 - processOneVarnode: (register, 0x30, 8) INT_ZEXT (register, 0x30, 4)
+Varnode is function parameter -> parameter #1... (register, 0x30, 4)
+Could not get calling function @ 0x0
+Could not get calling function @ 0x400adc
+Could not get calling function @ 0x400cd8
+analyzeCallSites(..., intermediatefunc2, ...) - found calling function @ 0x400965 [main]
+found unconditional call main -> intermediatefunc2
+
+Call @ 0x400965 [main] to 0x4008d0 [intermediatefunc2] (4 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x40095e - processOneVarnode: (register, 0x30, 8) INT_ZEXT (register, 0x0, 4)
+0x40095c - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (register, 0x0, 4)
+0x40094e - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400750, 8) , (const, 0x5, 8)
+Located source - call to 400750 [getarg1]
+Adding new child...
+Function getarg1 entry @ 0x400750
+Found getarg1 return @ 0x40075e
+0x40075a - processOneVarnode: (register, 0x0, 8) COPY (register, 0x0, 8)
+0x40075a - processOneVarnode: (register, 0x0, 8) INT_ZEXT (register, 0x0, 4)
+0x40075a - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x38, 4) , (const, 0x4, 4)
+Varnode is function parameter -> parameter #0... (register, 0x38, 4)
+Could not get calling function @ 0x0
+Could not get calling function @ 0x400ab4
+Could not get calling function @ 0x400c38
+analyzeCallSites(..., getarg1, ...) - found calling function @ 0x40085f [analyzefun]
+found unconditional call analyzefun -> getarg1
+
+Call @ 0x40085f [analyzefun] to 0x400750 [getarg1] (2 pcodeops)
+	Parameter #1 - (const, 0xd9038, 8) @ 0xd9038
+		isConstant: 888888
+Adding new child...
+Adding new parent... 
+analyzeCallSites(..., getarg1, ...) - found calling function @ 0x40094e [main]
+found unconditional call main -> getarg1
+
+Call @ 0x40094e [main] to 0x400750 [getarg1] (2 pcodeops)
+	Parameter #1 - (const, 0x5, 8) @ 0x5
+		isConstant: 5
+Adding new child...
+Adding new parent... 
+
+
+
+
+0x400941 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400732, 8)
+Located source - call to 400732 [getrand]
+Adding new child...
+Function getrand entry @ 0x400732
+Found getrand return @ 0x40074f
+0x400747 - processOneVarnode: (register, 0x0, 8) COPY (register, 0x0, 8)
+0x400747 - processOneVarnode: (register, 0x0, 8) INT_ZEXT (unique, 0x1000003a, 4)
+0x400747 - processOneVarnode: (unique, 0x1000003a, 4) CAST (register, 0x0, 4)
+0x400747 - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (register, 0x0, 4)
+0x400742 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400530, 8)
+Located source - call to 400530 [rand]
+Adding new child...
+Function rand entry @ 0x400530
+Found rand return @ 0x400530
+0x400530 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602030, 8)
+Located source - call to 602030 [rand]
+Adding new child...
+Function rand entry @ 0x602030
+Found rand return @ 0x602030
+--> Could not resolve return value from rand
+
+
+
+
+0x40073b - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400530, 8)
+Located source - call to 400530 [rand]
+Adding new child...
+Function rand entry @ 0x400530
+Found rand return @ 0x400530
+0x400530 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602030, 8)
+Located source - call to 602030 [rand]
+Adding new child...
+Function rand entry @ 0x602030
+Found rand return @ 0x602030
+--> Could not resolve return value from rand
+
+
+
+
+
+
+
+
+Adding new parent... 
+analyzeCallSites(..., intermediatefunc2, ...) - found calling function @ 0x400974 [main]
+found unconditional call main -> intermediatefunc2
+
+Call @ 0x400974 [main] to 0x4008d0 [intermediatefunc2] (3 pcodeops)
+	Parameter #2 - (const, 0x64, 8) @ 0x64
+		isConstant: 100
+Adding new child...
+Adding new parent... 
+analyzeCallSites(..., intermediatefunc2, ...) - found calling function @ 0x40098d [main]
+found unconditional call main -> intermediatefunc2
+
+Call @ 0x40098d [main] to 0x4008d0 [intermediatefunc2] (3 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x400986 - processOneVarnode: (register, 0x30, 8) INT_ZEXT (register, 0x0, 4)
+0x400983 - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (const, 0x64, 4)
+0x40097e - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400646, 8)
+Located source - call to 400646 [getNum]
+Adding new child...
+Function getNum entry @ 0x400646
+Found getNum return @ 0x400655
+--> Could not resolve return value from getNum
+Adding new parent... 
+analyzeCallSites(..., intermediatefunc2, ...) - found calling function @ 0x4009a6 [main]
+found unconditional call main -> intermediatefunc2
+
+Call @ 0x4009a6 [main] to 0x4008d0 [intermediatefunc2] (3 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x40099f - processOneVarnode: (register, 0x30, 8) INT_ZEXT (register, 0x0, 4)
+0x40099c - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (const, 0x63, 4)
+0x400997 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400646, 8)
+Located source - call to 400646 [getNum]
+Adding new child...
+Function getNum entry @ 0x400646
+Found getNum return @ 0x400655
+--> Could not resolve return value from getNum
+Adding new parent... 
+Adding new parent... 
+analyzeCallSites(..., analyzefun, ...) - found calling function @ 0x40090c [main]
+found unconditional call main -> analyzefun
+
+Call @ 0x40090c [main] to 0x400799 [analyzefun] (3 pcodeops)
+	Parameter #2 - (const, 0x4d, 8) @ 0x4d
+		isConstant: 77
+Adding new child...
+Adding new parent... 
+analyzeCallSites(..., analyzefun, ...) - found calling function @ 0x400937 [main]
+found unconditional call main -> analyzefun
+
+Call @ 0x400937 [main] to 0x400799 [analyzefun] (3 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x400930 - processOneVarnode: (register, 0x30, 8) INT_AND (register, 0x0, 8) , (const, 0xffffffff, 8)
+0x400925 - processOneVarnode: (register, 0x0, 8) CALL (ram, 0x4004e0, 8) , (const, 0x0, 4) , (const, 0x0, 8) , (const, 0x0, 8) , (const, 0x0, 4)
+Located source - call to 4004e0 [recv]
+Adding new child...
+Function recv entry @ 0x4004e0
+Found recv return @ 0x4004e0
+0x4004e0 - processOneVarnode: (register, 0x0, 8) CALL (ram, 0x602000, 8) , (register, 0x38, 4) , (register, 0x30, 8) , (register, 0x10, 8) , (register, 0x8, 4)
+Located source - call to 602000 [recv]
+Adding new child...
+Function recv entry @ 0x602000
+Found recv return @ 0x602000
+--> Could not resolve return value from recv
+
+
+
+
+Adding new parent... 
+
+Call @ 0x400869 [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x400864 - processOneVarnode: (register, 0x0, 8) INT_SEXT (register, 0x0, 4)
+0x40085f - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400750, 8) , (const, 0xd9038, 8)
+Located source - call to 400750 [getarg1]
+Adding new child...
+Function getarg1 entry @ 0x400750
+Found getarg1 return @ 0x40075e
+0x40075a - processOneVarnode: (register, 0x0, 8) COPY (register, 0x0, 8)
+0x40075a - processOneVarnode: (register, 0x0, 8) INT_ZEXT (register, 0x0, 4)
+0x40075a - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x38, 4) , (const, 0x4, 4)
+Varnode is function parameter -> parameter #0... (register, 0x38, 4)
+Could not get calling function @ 0x0
+Could not get calling function @ 0x400ab4
+Could not get calling function @ 0x400c38
+analyzeCallSites(..., getarg1, ...) - found calling function @ 0x40085f [analyzefun]
+found unconditional call analyzefun -> getarg1
+
+Call @ 0x40085f [analyzefun] to 0x400750 [getarg1] (2 pcodeops)
+	Parameter #1 - (const, 0xd9038, 8) @ 0xd9038
+		isConstant: 888888
+Adding new child...
+Adding new parent... 
+analyzeCallSites(..., getarg1, ...) - found calling function @ 0x40094e [main]
+found unconditional call main -> getarg1
+
+Call @ 0x40094e [main] to 0x400750 [getarg1] (2 pcodeops)
+	Parameter #1 - (const, 0x5, 8) @ 0x5
+		isConstant: 5
+Adding new child...
+Adding new parent... 
+
+
+
+
+
+Call @ 0x40087d [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x400878 - processOneVarnode: (register, 0x0, 8) INT_SEXT (register, 0x0, 4)
+0x400873 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x40075f, 8)
+Located source - call to 40075f [phidemo]
+Adding new child...
+Function phidemo entry @ 0x40075f
+Found phidemo return @ 0x400798
+0x400794 - processOneVarnode: (register, 0x0, 8) COPY (register, 0x0, 8)
+0x400794 - processOneVarnode: (register, 0x0, 8) INT_ZEXT (stack, 0xfffffffffffffff4, 4)
+0x400794 - processOneVarnode: (stack, 0xfffffffffffffff4, 4) MULTIEQUAL (stack, 0xfffffffffffffff4, 4) , (stack, 0xfffffffffffffff4, 4) , (stack, 0xfffffffffffffff4, 4)
+Processing a MULTIEQUAL with 3 inputs0x400778 - processOneVarnode: (stack, 0xfffffffffffffff4, 4) COPY (const, 0x64, 4)
+			processOneVarnode: Addr or Constant! - (const, 0x64, 4)
+Adding new child...
+0x400767 - processOneVarnode: (stack, 0xfffffffffffffff4, 4) COPY (const, 0x0, 4)
+			processOneVarnode: Addr or Constant! - (const, 0x0, 4)
+Adding new child...
+0x40078d - processOneVarnode: (stack, 0xfffffffffffffff4, 4) COPY (const, 0x2bc, 4)
+			processOneVarnode: Addr or Constant! - (const, 0x2bc, 4)
+Adding new child...
+
+
+
+
+
+Call @ 0x4008a1 [analyzefun] to 0x400510 [malloc] (2 pcodeops)
+	Parameter #1 - (register, 0x0, 8) @ 0x0
+0x40089c - processOneVarnode: (register, 0x0, 8) INT_SEXT (stack, 0xffffffffffffffec, 4)
+0x400899 - processOneVarnode: (stack, 0xffffffffffffffec, 4) MULTIEQUAL (stack, 0xffffffffffffffec, 4) , (unique, 0x10000169, 4)
+Processing a MULTIEQUAL with 2 inputs0x400882 - processOneVarnode: (stack, 0xffffffffffffffec, 4) COPY (const, 0x4444, 4)
+			processOneVarnode: Addr or Constant! - (const, 0x4444, 4)
+Adding new child...
+0x400896 - processOneVarnode: (unique, 0x10000169, 4) COPY (register, 0x30, 4)
+Varnode is function parameter -> parameter #1... (register, 0x30, 4)
+Could not get calling function @ 0x0
+Could not get calling function @ 0x400ac4
+Could not get calling function @ 0x400c78
+analyzeCallSites(..., analyzefun, ...) - found calling function @ 0x4008eb [intermediatefunc2]
+found unconditional call intermediatefunc2 -> analyzefun
+
+Call @ 0x4008eb [intermediatefunc2] to 0x400799 [analyzefun] (4 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x4008e6 - processOneVarnode: (register, 0x30, 8) INT_ZEXT (register, 0x30, 4)
+Varnode is function parameter -> parameter #1... (register, 0x30, 4)
+Could not get calling function @ 0x0
+Could not get calling function @ 0x400adc
+Could not get calling function @ 0x400cd8
+analyzeCallSites(..., intermediatefunc2, ...) - found calling function @ 0x400965 [main]
+found unconditional call main -> intermediatefunc2
+
+Call @ 0x400965 [main] to 0x4008d0 [intermediatefunc2] (4 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x40095e - processOneVarnode: (register, 0x30, 8) INT_ZEXT (register, 0x0, 4)
+0x40095c - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (register, 0x0, 4)
+0x40094e - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400750, 8) , (const, 0x5, 8)
+Located source - call to 400750 [getarg1]
+Adding new child...
+Function getarg1 entry @ 0x400750
+Found getarg1 return @ 0x40075e
+0x40075a - processOneVarnode: (register, 0x0, 8) COPY (register, 0x0, 8)
+0x40075a - processOneVarnode: (register, 0x0, 8) INT_ZEXT (register, 0x0, 4)
+0x40075a - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x38, 4) , (const, 0x4, 4)
+Varnode is function parameter -> parameter #0... (register, 0x38, 4)
+Could not get calling function @ 0x0
+Could not get calling function @ 0x400ab4
+Could not get calling function @ 0x400c38
+analyzeCallSites(..., getarg1, ...) - found calling function @ 0x40085f [analyzefun]
+found unconditional call analyzefun -> getarg1
+
+Call @ 0x40085f [analyzefun] to 0x400750 [getarg1] (2 pcodeops)
+	Parameter #1 - (const, 0xd9038, 8) @ 0xd9038
+		isConstant: 888888
+Adding new child...
+Adding new parent... 
+analyzeCallSites(..., getarg1, ...) - found calling function @ 0x40094e [main]
+found unconditional call main -> getarg1
+
+Call @ 0x40094e [main] to 0x400750 [getarg1] (2 pcodeops)
+	Parameter #1 - (const, 0x5, 8) @ 0x5
+		isConstant: 5
+Adding new child...
+Adding new parent... 
+
+
+
+
+0x400941 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400732, 8)
+Located source - call to 400732 [getrand]
+Adding new child...
+Function getrand entry @ 0x400732
+Found getrand return @ 0x40074f
+0x400747 - processOneVarnode: (register, 0x0, 8) COPY (register, 0x0, 8)
+0x400747 - processOneVarnode: (register, 0x0, 8) INT_ZEXT (unique, 0x1000003a, 4)
+0x400747 - processOneVarnode: (unique, 0x1000003a, 4) CAST (register, 0x0, 4)
+0x400747 - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (register, 0x0, 4)
+0x400742 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400530, 8)
+Located source - call to 400530 [rand]
+Adding new child...
+Function rand entry @ 0x400530
+Found rand return @ 0x400530
+0x400530 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602030, 8)
+Located source - call to 602030 [rand]
+Adding new child...
+Function rand entry @ 0x602030
+Found rand return @ 0x602030
+--> Could not resolve return value from rand
+
+
+
+
+0x40073b - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400530, 8)
+Located source - call to 400530 [rand]
+Adding new child...
+Function rand entry @ 0x400530
+Found rand return @ 0x400530
+0x400530 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x602030, 8)
+Located source - call to 602030 [rand]
+Adding new child...
+Function rand entry @ 0x602030
+Found rand return @ 0x602030
+--> Could not resolve return value from rand
+
+
+
+
+
+
+
+
+Adding new parent... 
+analyzeCallSites(..., intermediatefunc2, ...) - found calling function @ 0x400974 [main]
+found unconditional call main -> intermediatefunc2
+
+Call @ 0x400974 [main] to 0x4008d0 [intermediatefunc2] (3 pcodeops)
+	Parameter #2 - (const, 0x64, 8) @ 0x64
+		isConstant: 100
+Adding new child...
+Adding new parent... 
+analyzeCallSites(..., intermediatefunc2, ...) - found calling function @ 0x40098d [main]
+found unconditional call main -> intermediatefunc2
+
+Call @ 0x40098d [main] to 0x4008d0 [intermediatefunc2] (3 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x400986 - processOneVarnode: (register, 0x30, 8) INT_ZEXT (register, 0x0, 4)
+0x400983 - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (const, 0x64, 4)
+0x40097e - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400646, 8)
+Located source - call to 400646 [getNum]
+Adding new child...
+Function getNum entry @ 0x400646
+Found getNum return @ 0x400655
+--> Could not resolve return value from getNum
+Adding new parent... 
+analyzeCallSites(..., intermediatefunc2, ...) - found calling function @ 0x4009a6 [main]
+found unconditional call main -> intermediatefunc2
+
+Call @ 0x4009a6 [main] to 0x4008d0 [intermediatefunc2] (3 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x40099f - processOneVarnode: (register, 0x30, 8) INT_ZEXT (register, 0x0, 4)
+0x40099c - processOneVarnode: (register, 0x0, 4) INT_ADD (register, 0x0, 4) , (const, 0x63, 4)
+0x400997 - processOneVarnode: (register, 0x0, 4) CALL (ram, 0x400646, 8)
+Located source - call to 400646 [getNum]
+Adding new child...
+Function getNum entry @ 0x400646
+Found getNum return @ 0x400655
+--> Could not resolve return value from getNum
+Adding new parent... 
+Adding new parent... 
+analyzeCallSites(..., analyzefun, ...) - found calling function @ 0x40090c [main]
+found unconditional call main -> analyzefun
+
+Call @ 0x40090c [main] to 0x400799 [analyzefun] (3 pcodeops)
+	Parameter #2 - (const, 0x4d, 8) @ 0x4d
+		isConstant: 77
+Adding new child...
+Adding new parent... 
+analyzeCallSites(..., analyzefun, ...) - found calling function @ 0x400937 [main]
+found unconditional call main -> analyzefun
+
+Call @ 0x400937 [main] to 0x400799 [analyzefun] (3 pcodeops)
+	Parameter #2 - (register, 0x30, 8) @ 0x30
+0x400930 - processOneVarnode: (register, 0x30, 8) INT_AND (register, 0x0, 8) , (const, 0xffffffff, 8)
+0x400925 - processOneVarnode: (register, 0x0, 8) CALL (ram, 0x4004e0, 8) , (const, 0x0, 4) , (const, 0x0, 8) , (const, 0x0, 8) , (const, 0x0, 4)
+Located source - call to 4004e0 [recv]
+Adding new child...
+Function recv entry @ 0x4004e0
+Found recv return @ 0x4004e0
+0x4004e0 - processOneVarnode: (register, 0x0, 8) CALL (ram, 0x602000, 8) , (register, 0x38, 4) , (register, 0x30, 8) , (register, 0x10, 8) , (register, 0x8, 4)
+Located source - call to 602000 [recv]
+Adding new child...
+Function recv entry @ 0x602000
+Found recv return @ 0x602000
+--> Could not resolve return value from recv
+
+
+
+
+Adding new parent... 
+
+
+
+
+
+---------------------
+
+PRINTING OUTPUTS
+
+
+
+SINK: call to malloc in analyzefun2 @ 0x4008b2
+-CONST: 5 (0x5)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun3 @ 0x4008c8
+-C: rand
+--C: rand
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x4007bb
+-CONST: 5 (0x5)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x4007c8
+-CONST: 9 (0x9)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x4007da
+-CONST: 19 (0x13)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x4007ee
+-C: return3
+--CONST: 3 (0x3)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x400805
+-C: getNumber
+--ØCONST: 9 (0x9)
+--ØCONST: 47 (0x2f)
+--ØC: atoi
+--Ø-C: atoi
+--ØCONST: 61 (0x3d)
+--ØC: rand
+--Ø-C: rand
+--ØC: oneOf3
+--Ø-ØCONST: 1 (0x1)
+--Ø-ØCONST: 2 (0x2)
+--Ø-ØCONST: 3 (0x3)
+--ØCONST: 77 (0x4d)
+--ØCONST: 11 (0xb)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x400819
+-C: getNumber2
+--C: atoi
+---C: atoi
+--C: getNumber
+---ØCONST: 9 (0x9)
+---ØCONST: 47 (0x2f)
+---ØC: atoi
+---Ø-C: atoi
+---ØCONST: 61 (0x3d)
+---ØC: rand
+---Ø-C: rand
+---ØC: oneOf3
+---Ø-ØCONST: 1 (0x1)
+---Ø-ØCONST: 2 (0x2)
+---Ø-ØCONST: 3 (0x3)
+---ØCONST: 77 (0x4d)
+---ØCONST: 11 (0xb)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x400834
+-C: return3
+--CONST: 3 (0x3)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x400848
+-C: strlen
+--C: strlen
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x400855
++P: call intermediatefunc2 -> analyzefun @ 0x4008eb - param #1
+++P: call main -> intermediatefunc2 @ 0x400965 - param #1
+++-C: getarg1
+++-+P: call analyzefun -> getarg1 @ 0x40085f - param #0
+++-+-CONST: 888888 (0xd9038)
+++-+P: call main -> getarg1 @ 0x40094e - param #0
+++-+-CONST: 5 (0x5)
+++-C: getrand
+++--C: rand
+++---C: rand
+++--C: rand
+++---C: rand
+++P: call main -> intermediatefunc2 @ 0x400974 - param #1
+++-CONST: 100 (0x64)
+++P: call main -> intermediatefunc2 @ 0x40098d - param #1
+++-C: getNum
+++P: call main -> intermediatefunc2 @ 0x4009a6 - param #1
+++-C: getNum
++P: call main -> analyzefun @ 0x40090c - param #1
++-CONST: 77 (0x4d)
++P: call main -> analyzefun @ 0x400937 - param #1
++-C: recv
++--C: recv
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x400869
+-C: getarg1
+-+P: call analyzefun -> getarg1 @ 0x40085f - param #0
+-+-CONST: 888888 (0xd9038)
+-+P: call main -> getarg1 @ 0x40094e - param #0
+-+-CONST: 5 (0x5)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x40087d
+-C: phidemo
+--ØCONST: 100 (0x64)
+--ØCONST: 0 (0x0)
+--ØCONST: 700 (0x2bc)
+
+
+
+-------------
+
+
+SINK: call to malloc in analyzefun @ 0x4008a1
+-ØCONST: 17476 (0x4444)
++ØP: call intermediatefunc2 -> analyzefun @ 0x4008eb - param #1
++Ø+P: call main -> intermediatefunc2 @ 0x400965 - param #1
++Ø+-C: getarg1
++Ø+-+P: call analyzefun -> getarg1 @ 0x40085f - param #0
++Ø+-+-CONST: 888888 (0xd9038)
++Ø+-+P: call main -> getarg1 @ 0x40094e - param #0
++Ø+-+-CONST: 5 (0x5)
++Ø+-C: getrand
++Ø+--C: rand
++Ø+---C: rand
++Ø+--C: rand
++Ø+---C: rand
++Ø+P: call main -> intermediatefunc2 @ 0x400974 - param #1
++Ø+-CONST: 100 (0x64)
++Ø+P: call main -> intermediatefunc2 @ 0x40098d - param #1
++Ø+-C: getNum
++Ø+P: call main -> intermediatefunc2 @ 0x4009a6 - param #1
++Ø+-C: getNum
++ØP: call main -> analyzefun @ 0x40090c - param #1
++Ø-CONST: 77 (0x4d)
++ØP: call main -> analyzefun @ 0x400937 - param #1
++Ø-C: recv
++Ø--C: recv
+
+
+
+-------------
+
+
+MallocTrace.java> Finished!
