@@ -1,5 +1,6 @@
 //Analysis to find arguments passed to malloc()
 //See our INFILTRATE 2019 presentation at https://vimeo.com/335158460
+//Blog post about this script: https://www.riverloopsecurity.com/blog/2019/05/pcode/
 //@author Alexei Bulazel
 //@category INFILTRATE
 //@keybinding 
