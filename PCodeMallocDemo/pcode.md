@@ -1,7 +1,5 @@
----
-title: "Working With Ghidra's P-Code To Identify Vulnerable Function Calls"
-author: Alexei Bulazel
----
+# Working With Ghidra's P-Code To Identify Vulnerable Function Calls by Alexei Bulazel
+
 
 This year at [INFILTRATE 2019](https://infiltratecon.com/), I got together with fellow [RPISEC](https://rpis.ec/) alumnus and [Boston Cybernetics Institute](https://www.bostoncybernetics.org/) co-founder [Jeremy Blackthorne](https://twitter.com/0xJeremy) to present ["Three Heads Are Better Than One: Mastering NSA’s Ghidra Reverse Engineering Tool"](https://vimeo.com/335158460). [Around 50 minutes into that presentation](https://vimeo.com/335158460#t=49m45s), I presented a demo of a proof of concept script I built to trace out how inputs to `malloc` are derived. In this blog post, we'll take a deeper look at that script.
 
