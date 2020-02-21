@@ -282,7 +282,7 @@ public class MallocTrace extends GhidraScript {
 			
 		}
 		
-		return currentPath;
+		return path;
 	}
 
 
