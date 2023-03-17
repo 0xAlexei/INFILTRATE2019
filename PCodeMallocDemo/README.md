@@ -94,7 +94,19 @@ I've published the script, a test binary and its source code, and the output I r
 
 You can run the script by putting it in your Ghidra scripts directory (default `$USER_HOME/ghidra_scripts`), opening Ghidra's Script Manager window, and then looking for it in a folder labeled "INFILTRATE". The green arrow "Run Script" button at the top of the Script Manager window will then run the script, with output printed to the console.
 
-I'd also add that because the script simply prints output to the console, it can be run with Ghidra's command line ["headless mode"](https://ghidra-sre.org/InstallationGuide.html#RunHeadless) as well, to print its output to your command line terminal.
+I'd also add that because the script simply prints output to the console, it can be run with Ghidra's command line ["headless mode"](https://sid.ethz.ch/debian/ghidra/ghidra-master/GhidraDocs/GhidraClass/Intermediate/HeadlessAnalyzer.html) as well, to print its output to your command line terminal.
+
+```shell
+ghidra-analyzeHeadles </path-to/> <project> -import ./mallocexample -postScript MallocTrace.java -scriptPath "$PWD" -overwrite 
+```
+
+1. `<path-to>` is which path you want to put the newly create project
+
+2. `<project>` is the name of newly create project, such as simply "new" 
+
+3. `-scriptPath` is the path of the script
+
+4. `-overwirte` will overwrite the project if exists
 
 ## Algorithm
 
