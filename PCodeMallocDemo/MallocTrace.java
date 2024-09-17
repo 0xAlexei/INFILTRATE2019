@@ -13,7 +13,7 @@ import ghidra.app.decompiler.DecompileResults;
 import ghidra.app.script.GhidraScript;
 import ghidra.framework.options.ToolOptions;
 import ghidra.framework.plugintool.PluginTool;
-import ghidra.framework.plugintool.util.OptionsService;
+//import ghidra.framework.plugintool.util.OptionsService;	// Deprecated
 import ghidra.util.exception.InvalidInputException;
 import ghidra.util.exception.NotFoundException;
 import ghidra.util.exception.NotYetImplementedException;
@@ -722,25 +722,43 @@ public class MallocTrace extends GhidraScript {
 	set up the decompiler
 	*/
 	private DecompInterface setUpDecompiler(Program program) {
-		DecompInterface decompInterface = new DecompInterface();
-
+		
+		// Updated for GhidraAPI 11.0.1
+		//
+		// Instantiate the Interface: 
+		DecompInterface ifc = new DecompInterface();
+		
+		// Configuration options for the decompiler
 		DecompileOptions options;
 		options = new DecompileOptions();
-		PluginTool tool = state.getTool();
-		if (tool != null) {
-			OptionsService service = tool.getService(OptionsService.class);
-			if (service != null) {
-				ToolOptions opt = service.getOptions("Decompiler");
-				options.grabFromToolAndProgram(null, opt, program);
-			}
+
+		ifc.setOptions(options);					// Inform interface of global options
+		ifc.toggleSyntaxTree(true);					// produce syntax trees?
+		ifc.toggleCCode(true);						// produce C code?
+		ifc.setSimplificationStyle("decompile");	// Alternate Analysis style
+		
+		// Setup the actual decompiler process, using all above initialization
+		//ifc.openProgram(program, language);
+		
+		// Make calls to the decompiler
+		//DecompileResults res = ifc.decompileFunction(func, 0, taskmonitor);
+		
+		// Check for error conditions
+		/*
+		if (!res.decompileCompleted() ) {
+			System.out.println(res.getErrorMessage());
+			return;
 		}
-		decompInterface.setOptions(options);
-
-		decompInterface.toggleCCode(true);
-		decompInterface.toggleSyntaxTree(true);
-		decompInterface.setSimplificationStyle("decompile");
-
-		return decompInterface;
+		*/
+		
+		// Make use of results
+		// Get C Code
+		//ClangTokenGroup tokgroup = res.getCCodeMarkup();
+		
+		// Get the function object / syntax tree
+		//HighFunction hfunc = res.getHighFunction();
+		
+		return ifc;
 	}
 
 	/*
